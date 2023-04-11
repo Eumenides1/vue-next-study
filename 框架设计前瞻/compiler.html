@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue@3.2.36/dist/vue.global.js"></script>
+</head>
+
+<body>
+  <div id="app"></div>
+</body>
+
+<script>
+  const { compile, createApp } = Vue
+
+  // 创建一个 html 结构
+  const html = `
+    <div class="test">hello compiler</div>
+  `
+  // 利用 compile 函数，生成 render 函数
+  const renderFn = compile(html)
+
+  // 创建实例
+  const app = createApp({
+    // 利用 render 函数进行渲染
+    render: renderFn
+  })
+  // 挂载
+  app.mount('#app')
+</script>
+
+</html>
